@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 const Feed = () => {
 
@@ -7,15 +8,16 @@ const Feed = () => {
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-D88bP4KNMu39p_FmL1aPo21TnGnVvjDedJ6cH5MQQ&s",
         caption: "This is a caption",
         likes: 0,
-        username: "John",
-        comments: [
-            {
-                username: "Jane",
-                comment: "Nice"
-            }
-        ]
+
     }])
 
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const response = await axios.get("http://localhost:3000/posts")
+            setPosts(response.data.posts)
+        }
+        fetchPosts()
+    }, [])
 
     return (
         <section className='feed-section'>
@@ -27,7 +29,7 @@ const Feed = () => {
                             <p>{post.caption}</p>
                             <button>Like</button>
                             <p>{post.likes} likes</p>
-                            {post.comments.map((comment) => (
+                            {post.comments?.map((comment) => (
                                 <p key={comment.username}>{comment.username}: {comment.comment}</p>
                             ))}
                         </div>
