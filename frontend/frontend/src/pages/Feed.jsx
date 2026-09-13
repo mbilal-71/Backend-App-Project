@@ -28,10 +28,6 @@ const Feed = () => {
                             <img src={post.image} alt="" />
                             <p>{post.caption}</p>
                             <button>Like</button>
-                            <p>{post.likes} likes</p>
-                            {post.comments?.map((comment) => (
-                                <p key={comment.username}>{comment.username}: {comment.comment}</p>
-                            ))}
                         </div>
                     ))
                 ) : (
