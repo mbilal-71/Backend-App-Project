@@ -34,4 +34,12 @@ app.get('/posts', async(req,res)=>{
 })
 })
 
+app.delete('/posts/:id', async(req,res)=>{
+    const {id} = req.params
+    await postModel.findByIdAndDelete(id)
+    return res.status(200).json({
+        message: 'post deleted successfully'
+    })
+})
+
 module.exports = app

@@ -19,15 +19,21 @@ const Feed = () => {
         fetchPosts()
     }, [])
 
+    const handleDelete = async (id) => {
+        await axios.delete(`http://localhost:3000/posts/${id}`)
+        setPosts(posts.filter((post) => post._id !== id))
+    }
+
     return (
         <section className='feed-section'>
             {
                 posts.length > 0 ? (
                     posts.map((post) => (
-                        <div key={post.id}>
+                        <div key={post._id}>
                             <img src={post.image} alt="" />
                             <p>{post.caption}</p>
                             <button>Like</button>
+                            <button onClick={() => handleDelete(post._id)}>Delete</button>
                         </div>
                     ))
                 ) : (
