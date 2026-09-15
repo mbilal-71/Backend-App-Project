@@ -18,6 +18,7 @@ const Feed = () => {
         setPosts(posts.filter((post) => post._id !== id))
     }
 
+
     return (
         <section className='feed-section'>
             {

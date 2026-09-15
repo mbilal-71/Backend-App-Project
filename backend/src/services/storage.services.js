@@ -12,4 +12,9 @@ async function uploadFile(buffer){
     return result;
 }
 
-module.exports= uploadFile
+async function deleteFile(id){
+    const result = await imageKit.files.delete(id)
+    return result;
+}
+
+module.exports= {uploadFile,deleteFile}

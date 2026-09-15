@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const multer = require('multer')
 const postModel = require('./models/post.model')
-const uploadFile = require('./services/storage.services')
+const {uploadFile, deleteFile} = require('./services/storage.services')
 
 const app = express()
 
@@ -36,6 +36,7 @@ app.get('/posts', async(req,res)=>{
 
 app.delete('/posts/:id', async(req,res)=>{
     const {id} = req.params
+    await deleteFile(id)
     await postModel.findByIdAndDelete(id)
     return res.status(200).json({
         message: 'post deleted successfully'
