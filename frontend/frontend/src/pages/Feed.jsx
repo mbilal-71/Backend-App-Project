@@ -3,13 +3,7 @@ import axios from "axios"
 
 const Feed = () => {
 
-    const [posts, setPosts] = useState([{
-        id: 1,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-D88bP4KNMu39p_FmL1aPo21TnGnVvjDedJ6cH5MQQ&s",
-        caption: "This is a caption",
-        likes: 0,
-
-    }])
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
         const fetchPosts = async () => {

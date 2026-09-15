@@ -9,7 +9,7 @@ const CreatePost = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.target)
-        await axios.post("http://localhost:3000/create-post", formData)
+        await axios.post("http://localhost:3000/post", formData)
         navigate("/feed")
     }
 
